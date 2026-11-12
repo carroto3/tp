@@ -1,25 +1,27 @@
-class GameObject:  # Базовый класс для всех игровых объектов
-    next_id = 1  # Счётчик для выдачи уникальных идентификаторов
+class GameObject:
+    next_id = 1
 
-    def __init__(self, name, x, y):  # Сохраняем имя и начальные координаты
-        self.__id = GameObject.next_id  # Присваиваем объекту номер
-        GameObject.next_id += 1  # Подготавливаем номер для следующего объекта
-        self.__name = name  # Запоминаем имя объекта
-        self.__x = x  # Запоминаем координату X
-        self.__y = y  # Запоминаем координату Y
+    def __init__(self, name, x, y):
+        self.__id = GameObject.next_id
+        GameObject.next_id += 1
+        self.__name = name
+        self.__x = x
+        self.__y = y
 
-    def getId(self):  # Возвращает идентификатор объекта
+    def getId(self):
         return self.__id
 
-    def getName(self):  # Возвращает имя объекта
+    def getName(self):
         return self.__name
 
-    def getX(self):  # Возвращает координату X
+    def getX(self):
         return self.__x
 
-    def getY(self):  # Возвращает координату Y
+    def getY(self):
         return self.__y
 
-    def setPosition(self, x, y):  # Меняет положение объекта
+    def _setPosition(self, x, y):
+        if not isinstance(x, (int, float)) or not isinstance(y, (int, float)):
+            raise TypeError("координаты должны быть числами")
         self.__x = x
         self.__y = y

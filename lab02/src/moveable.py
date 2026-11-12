@@ -1,7 +1,7 @@
-from abc import ABC, abstractmethod  # Инструменты для абстрактных классов
+from abc import ABC, abstractmethod
 
 
-class Moveable(ABC):  # Интерфейс: объект умеет перемещаться
+class Moveable(ABC):
     @abstractmethod
-    def move(self, x, y):  # Перемещение в новые координаты
+    def move(self, x, y):
         pass

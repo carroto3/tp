@@ -6,7 +6,7 @@
 
 ## Описание работы
 
-В ходе лабораторной работы создан репозиторий проекта, выполнена первичная настройка Git, файлы добавлены в индекс и зафиксированы первым коммитом. Затем на GitHub создан удалённый репозиторий, добавлен адрес `origin` и изменения отправлены командой `git push`.
+Репозиторий `tp` создан на GitHub. Локальная копия проекта инициализирована, настроены имя и почта автора, добавлен удалённый репозиторий `origin`. Исходный код добавлен в индекс, зафиксирован коммитом «Add lab01» и отправлен на GitHub.
 
 ## Структура проекта
 
@@ -21,12 +21,12 @@
 
 ```bash
 git init
+git config --global user.name "Хуан Ибу"
+git config --global user.email "259972030+carroto3@users.noreply.github.com"
 git status
 git add .
-git config user.name "Хуан Ибу"
-git config user.email "259972030+carroto3@users.noreply.github.com"
-git commit -m "Initial commit"
-git log
+git commit -m "Add lab01"
+git log --oneline
 git remote add origin git@github.com:carroto3/tp.git
 git remote -v
 git push -u origin main
@@ -34,4 +34,4 @@ git push -u origin main
 
 ## Результат
 
-Создан репозиторий `tp` на GitHub, локальный репозиторий связан с удалённым, первый коммит отправлен на сервер. В этом же репозитории в дальнейшем размещаются остальные лабораторные работы.
+Локальный репозиторий связан с `git@github.com:carroto3/tp.git`, коммит «Add lab01» отправлен на GitHub. В этом же репозитории размещены следующие лабораторные работы.

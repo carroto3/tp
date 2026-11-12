@@ -1,19 +1,18 @@
-from game_object import GameObject  # Базовый класс игровых объектов
+from game_object import GameObject
 
 
-class Unit(GameObject):  # Юнит — игровой объект с запасом здоровья
-    def __init__(self, name, x, y, hp):  # Принимаем имя, координаты и здоровье
-        super().__init__(name, x, y)  # Инициализируем общую часть объекта
-        self.__hp = hp  # Запоминаем текущее здоровье
+class Unit(GameObject):
+    def __init__(self, name, x, y, hp):
+        super().__init__(name, x, y)
+        self.__hp = max(0.0, hp)
 
-    def isAlive(self):  # Юнит жив, пока здоровье положительно
+    def isAlive(self):
         return self.__hp > 0
 
-    def getHp(self):  # Возвращает текущее здоровье
+    def getHp(self):
         return self.__hp
 
-    def receiveDamage(self, damage):  # Обрабатывает полученный урон
-        self.__hp -= damage  # Отнимаем урон от здоровья
-
-        if self.__hp < 0:  # Здоровье не может уйти в минус
-            self.__hp = 0
+    def receiveDamage(self, damage):
+        if damage < 0:
+            raise ValueError("урон не может быть отрицательным")
+        self.__hp = max(0.0, self.__hp - damage)

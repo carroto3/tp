@@ -1,7 +1,8 @@
-from building import Building  # Класс построек
-from moveable import Moveable  # Возможность перемещаться
+from building import Building
+from moveable import Moveable
 
 
-class MobileHouse(Building, Moveable):  # Дом на колёсах — подвижная постройка
-    def move(self, x, y):  # Дом может менять координаты
-        self.setPosition(x, y)
+class MobileHouse(Building, Moveable):
+    def move(self, x, y):
+        self._setPosition(x, y)
+        return True

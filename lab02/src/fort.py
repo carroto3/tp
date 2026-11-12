@@ -1,12 +1,17 @@
-from building import Building  # Класс построек
-from attacker import Attacker  # Возможность атаковать
+from unit import Unit
+from building import Building
+from attacker import Attacker
 
 
-class Fort(Building, Attacker):  # Крепость — постройка, которая умеет стрелять
-    def __init__(self, name, x, y, built, damage):  # Данные крепости и урон
-        super().__init__(name, x, y, built)  # Передаём общие данные в Building
-        self.__damage = damage  # Запоминаем силу атаки
+class Fort(Building, Attacker):
+    def __init__(self, name, x, y, built, damage):
+        super().__init__(name, x, y, built)
+        self.__damage = damage
 
-    def attack(self, unit):  # Стреляем только после постройки
-        if self.isBuilt():
-            unit.receiveDamage(self.__damage)
+    def attack(self, unit):
+        if not isinstance(unit, Unit):
+            raise TypeError("атаковать можно только юнита")
+        if not self.isBuilt() or not unit.isAlive():
+            return False
+        unit.receiveDamage(self.__damage)
+        return True

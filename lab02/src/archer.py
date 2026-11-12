@@ -1,17 +1,23 @@
-from unit import Unit  # Класс юнита
-from attacker import Attacker  # Возможность атаковать
-from moveable import Moveable  # Возможность перемещаться
+from unit import Unit
+from attacker import Attacker
+from moveable import Moveable
 
 
-class Archer(Unit, Attacker, Moveable):  # Лучник — юнит с атакой и перемещением
-    def __init__(self, name, x, y, hp, damage):  # Данные лучника и его урон
-        super().__init__(name, x, y, hp)  # Общие данные передаём в Unit
-        self.__damage = damage  # Запоминаем силу атаки
+class Archer(Unit, Attacker, Moveable):
+    def __init__(self, name, x, y, hp, damage):
+        super().__init__(name, x, y, hp)
+        self.__damage = damage
 
-    def attack(self, unit):  # Атака цели, если лучник жив
-        if self.isAlive():
-            unit.receiveDamage(self.__damage)
+    def attack(self, unit):
+        if not isinstance(unit, Unit):
+            raise TypeError("атаковать можно только юнита")
+        if not self.isAlive() or not unit.isAlive():
+            return False
+        unit.receiveDamage(self.__damage)
+        return True
 
-    def move(self, x, y):  # Живой лучник может сменить позицию
-        if self.isAlive():
-            self.setPosition(x, y)
+    def move(self, x, y):
+        if not self.isAlive():
+            return False
+        self._setPosition(x, y)
+        return True

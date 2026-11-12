@@ -1,7 +1,7 @@
-from abc import ABC, abstractmethod  # Инструменты для абстрактных классов
+from abc import ABC, abstractmethod
 
 
-class Attacker(ABC):  # Интерфейс: объект умеет атаковать
+class Attacker(ABC):
     @abstractmethod
-    def attack(self, unit):  # Цель атаки — другой юнит
+    def attack(self, unit):
         pass
