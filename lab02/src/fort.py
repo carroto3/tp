@@ -4,8 +4,8 @@ from attacker import Attacker
 
 
 class Fort(Building, Attacker):
-    def __init__(self, name, x, y, built, damage):
-        super().__init__(name, x, y, built)
+    def __init__(self, id, name, x, y, built, damage):
+        super().__init__(id, name, x, y, built)
         self.__damage = damage
 
     def attack(self, unit):

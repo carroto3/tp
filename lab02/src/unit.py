@@ -2,8 +2,8 @@ from game_object import GameObject
 
 
 class Unit(GameObject):
-    def __init__(self, name, x, y, hp):
-        super().__init__(name, x, y)
+    def __init__(self, id, name, x, y, hp):
+        super().__init__(id, name, x, y)
         self.__hp = max(0.0, hp)
 
     def isAlive(self):

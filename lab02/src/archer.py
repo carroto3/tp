@@ -4,8 +4,8 @@ from moveable import Moveable
 
 
 class Archer(Unit, Attacker, Moveable):
-    def __init__(self, name, x, y, hp, damage):
-        super().__init__(name, x, y, hp)
+    def __init__(self, id, name, x, y, hp, damage):
+        super().__init__(id, name, x, y, hp)
         self.__damage = damage
 
     def attack(self, unit):

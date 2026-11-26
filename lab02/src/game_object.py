@@ -1,9 +1,6 @@
 class GameObject:
-    __next_id = 1
-
-    def __init__(self, name, x, y):
-        self.__id = GameObject.__next_id
-        GameObject.__next_id += 1
+    def __init__(self, id, name, x, y):
+        self.__id = id
         self.__name = name
         self.__x = x
         self.__y = y
