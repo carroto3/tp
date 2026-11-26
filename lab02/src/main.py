@@ -33,9 +33,7 @@ def main():
     new_fort = Fort(7, "Новая крепость", 6, 6, False, 25)
     print("Построена:", new_fort.isBuilt())
     print("Попадание:", new_fort.attack(target))
-    new_fort.build()
-    print("Построена:", new_fort.isBuilt())
-    print("Попадание:", new_fort.attack(target))
+    print("Построенная крепость попала:", fort.attack(target))
 
     print("\nПеремещение:")
     print("Лучник:", archer.move(6, 7), archer.getX(), archer.getY())

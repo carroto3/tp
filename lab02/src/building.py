@@ -8,6 +8,3 @@ class Building(GameObject):
 
     def isBuilt(self):
         return self.__built
-
-    def build(self):
-        self.__built = True
