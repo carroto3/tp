@@ -17,40 +17,83 @@
 - `main/source.py` - точка входа программы;
 - `main/utils.py` - вспомогательные функции.
 
-## Выполненные команды
+## Ход выполнения
+
+Все шаги повторены на чистой папке `lab01_demo` и сняты на скриншоты. Скриншоты лежат в папке [`screenshots`](screenshots).
+
+### Шаг 1. Инициализация репозитория
 
 ```bash
 git init
-git config --global user.name "Хуан Ибу"
-git config --global user.email "259972030+carroto3@users.noreply.github.com"
-git status
-git add .
-git commit -m "Add lab01"
-git log --oneline
-git remote add origin git@github.com:carroto3/tp.git
-git remote -v
-git push -u origin main
 ```
 
-## Скриншоты выполнения
-
-Прогон команд повторён в чистой папке `lab01_demo`. `push` выполнен в ветку `lab01-demo`, потому что ветка `main` в репозитории уже занята готовыми лабораторными.
+Создаёт в текущей папке пустой локальный репозиторий: появляется скрытая директория `.git`, где Git хранит объекты, ветки и настройки.
 
 ![git init](screenshots/01_git_init.png)
 
-`git init` создаёт пустой локальный репозиторий в текущей папке.
+### Шаг 2. Проверка состояния
+
+```bash
+git status
+```
+
+Показывает, что коммитов ещё нет, а файлы `README.md` и `main/` не отслеживаются. Git видит их, но в историю они пока не попадут.
 
 ![git status](screenshots/02_git_status.png)
 
-`git status` показывает неотслеживаемые файлы `README.md` и `main/`.
+### Шаг 3. Добавление файлов в индекс
 
-![git add и git commit](screenshots/03_git_add_commit.png)
+```bash
+git add .
+git status
+```
 
-`git add .` переносит файлы в индекс, `git commit -m "Add lab01"` фиксирует коммит из трёх файлов.
+`git add .` переносит все файлы из рабочей директории в индекс (staging area). Повторный `git status` подтверждает, что три файла готовы к коммиту. Предупреждения про LF/CRLF - это нормальная реакция Windows-версии Git на окончания строк, на результат они не влияют.
 
-![git log, git remote и git push](screenshots/04_git_log_remote_push.png)
+![git add](screenshots/03_git_add.png)
 
-`git log --oneline` показывает историю, `git remote add origin` подключает удалённый репозиторий, `git push` отправляет коммит на GitHub.
+### Шаг 4. Первый коммит
+
+```bash
+git commit -m "Add lab01"
+```
+
+Фиксирует содержимое индекса как новый коммит `956497a` с сообщением «Add lab01». В выводе видно, что изменилось три файла и добавлено 59 строк.
+
+![git commit](screenshots/04_git_commit.png)
+
+### Шаг 5. История коммитов
+
+```bash
+git log --oneline
+```
+
+Показывает компактный список коммитов: `956497a (HEAD -> main) Add lab01`. Сейчас коммит один, и на него указывает `HEAD` ветки `main`.
+
+![git log](screenshots/05_git_log.png)
+
+### Шаг 6. Подключение удалённого репозитория
+
+```bash
+git remote add origin git@github.com:carroto3/tp.git
+git remote -v
+```
+
+`git remote add` привязывает локальный репозиторий к удалённому под именем `origin`, `git remote -v` показывает адрес для чтения (fetch) и записи (push).
+
+![git remote](screenshots/06_git_remote.png)
+
+### Шаг 7. Отправка коммита на GitHub
+
+```bash
+git push origin main:lab01-demo
+```
+
+Отправляет локальный коммит в удалённый репозиторий и создаёт там ветку `lab01-demo`. В выводе есть строка `* [new branch]` - значит, ветка появилась на GitHub, и GitHub сразу предложил ссылку на создание pull request.
+
+Ветка `lab01-demo` использована только для демонстрации команды: в `main` этого репозитория уже лежат готовые лабораторные, и перезаписывать её историей демонстрационного проекта нельзя. После снятия скриншота ветка удалена.
+
+![git push](screenshots/07_git_push.png)
 
 ## Результат
 
